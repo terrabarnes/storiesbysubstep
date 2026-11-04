@@ -1,0 +1,510 @@
+<title>Stories by Substep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap">
+
+<style>
+  /* ------------------------------------------------------------------
+     Palette: indigo + amber. Deliberately the one high-contrast pair
+     that survives deuteranopia, protanopia and tritanopia alike. No
+     red/green distinction carries meaning anywhere on this page, and
+     nothing is signalled by hue alone -- marked words also take weight
+     and a tinted ground.
+     Off-white rather than pure white, indigo-black rather than pure
+     black: lower glare for long reading.
+     ------------------------------------------------------------------ */
+  :root {
+    --ground:    #FBFAF7;
+    --paper:     #FFFFFF;
+    --ink:       #1A1B2E;
+    --dusk:      #4E5070;
+    --rule:      #E2DFD6;
+    --lamp:      #8F5A12;   /* amber, darkened to clear 4.5:1 as text  */
+    --lamp-tint: #F6E6C9;
+    --lamp-edge: #C8912F;
+
+    --measure: 36rem;
+    --step-0: 1.0625rem;
+    --step-1: 1.3125rem;
+    --step-2: 1.75rem;
+    --step-3: 2.375rem;
+    --step-4: 3.25rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:    #15161F;
+      --paper:     #1D1E29;
+      --ink:       #EFEDE6;
+      --dusk:      #A9ABC2;
+      --rule:      #323343;
+      --lamp:      #F2B457;
+      --lamp-tint: #3A2F1A;
+      --lamp-edge: #8A6A2E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:    #15161F;
+    --paper:     #1D1E29;
+    --ink:       #EFEDE6;
+    --dusk:      #A9ABC2;
+    --rule:      #323343;
+    --lamp:      #F2B457;
+    --lamp-tint: #3A2F1A;
+    --lamp-edge: #8A6A2E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Lexend", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: var(--step-0);
+    font-weight: 400;
+    line-height: 1.7;
+    /* Loosened tracking and word-spacing: both measurably help readers
+       who decode letter by letter. */
+    letter-spacing: 0.012em;
+    word-spacing: 0.04em;
+    text-align: left;        /* never justified -- justification opens rivers */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .eyebrow, .rung-n {
+    font-family: "Atkinson Hyperlegible", "Lexend", ui-sans-serif, system-ui, sans-serif;
+  }
+  h1, h2, h3 { text-wrap: balance; line-height: 1.22; margin: 0; }
+  p { margin: 0; }
+
+  /* No italics anywhere on this page: slanted letterforms are harder for
+     the readers these books are for. Emphasis is weight. */
+  em, i { font-style: normal; font-weight: 600; }
+
+  .wrap {
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  main { display: flex; flex-direction: column; gap: 5.5rem; padding-block: 3.5rem 5rem; }
+  section { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dusk);
+  }
+
+  /* ---------------------------------------------------------- masthead */
+  .masthead { display: flex; flex-direction: column; gap: 2rem; padding-block: 1rem 0; }
+  .sitename {
+    font-size: 0.875rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--lamp);
+  }
+  h1 { font-size: var(--step-4); font-weight: 700; }
+  .standfirst { font-size: var(--step-1); color: var(--dusk); font-weight: 300; }
+  .byline { font-size: 0.9375rem; color: var(--dusk); }
+
+  /* ------------------------------------------------------------- cover */
+  .cover { margin: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+  .cover img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+  }
+  .cover figcaption { font-size: 0.8125rem; color: var(--dusk); }
+
+  /* -------------------------------------------------------- disclaimer */
+  .disclaimer {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--dusk);
+    border-left: 3px solid var(--rule);
+    padding-left: 0.95rem;
+    max-width: 34rem;
+  }
+
+  /* ------------------------------------------------------------- table */
+  .table-scroll { overflow-x: auto; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 29rem;
+    font-size: 0.9375rem;
+  }
+  caption {
+    text-align: left;
+    color: var(--dusk);
+    font-size: 0.875rem;
+    padding-bottom: 0.9rem;
+    line-height: 1.6;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.7rem 0.9rem 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  thead th {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dusk);
+    border-bottom: 2px solid var(--ink);
+    white-space: nowrap;
+  }
+  tbody th {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    color: var(--lamp);
+    font-variant-numeric: tabular-nums;
+    width: 3rem;
+  }
+  td:last-child {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--dusk);
+  }
+
+  /* ------------------------------------------------------------ pages */
+  /* Specimen blocks are set the way the printed page is set: the book's
+     own face, double-leaded, short measure. They are the proof. */
+  .page {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 2rem 1.75rem 1.5rem;
+    font-size: var(--step-1);
+    line-height: 2;
+    font-weight: 300;
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .folio {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    color: var(--dusk); font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.75rem; margin-top: 0.4rem;
+  }
+
+  /* A marked word is never signalled by colour alone: it also takes
+     weight and a tinted ground, so it reads with no hue perception. */
+  mark {
+    background: var(--lamp-tint);
+    color: var(--ink);
+    font-weight: 600;
+    padding: 0.08em 0.22em;
+    border-bottom: 2px solid var(--lamp-edge);
+    border-radius: 2px;
+  }
+
+  /* ------------------------------------------------------------- prose */
+  h2 { font-size: var(--step-3); font-weight: 700; }
+  h3 { font-size: var(--step-1); font-weight: 700; }
+  .lede { font-size: var(--step-1); font-weight: 300; }
+  .prose { display: flex; flex-direction: column; gap: 1.15rem; }
+  .prose p { max-width: 34rem; }
+
+  /* ----------------------------------------------------------- the cast */
+  .cast { display: flex; flex-direction: column; gap: 0; }
+  .who {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .who:last-child { border-bottom: 1px solid var(--rule); }
+  .who dt {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700; font-size: var(--step-1);
+  }
+  .who dd { margin: 0; color: var(--dusk); }
+  @media (max-width: 34rem) {
+    .who { grid-template-columns: 1fr; gap: 0.35rem; }
+  }
+
+  /* ------------------------------------------------------------ ladder */
+  /* Numbered because the order is real: each set is only legal once the
+     set before it has been taught. */
+  .ladder { display: flex; flex-direction: column; gap: 2.75rem; }
+  .rung { display: flex; flex-direction: column; gap: 0.9rem; }
+  .rung-head { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
+  .rung-n {
+    font-weight: 700; font-size: 0.8125rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--lamp);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .rung-title { font-size: var(--step-2); font-weight: 700; }
+  .rung-adds { color: var(--dusk); font-size: 0.9375rem; }
+
+  /* -------------------------------------------------------------- buy */
+  .buy {
+    border: 2px solid var(--ink);
+    border-radius: 3px;
+    padding: 2rem 1.75rem;
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    align-self: flex-start;
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700; font-size: 1.0625rem;
+    letter-spacing: 0.02em;
+    padding: 0.85rem 1.6rem;
+    border-radius: 3px;
+    text-decoration: none;
+    background: var(--ink); color: var(--ground);
+    border: 2px solid var(--ink);
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .placeholder-note {
+    font-size: 0.875rem; color: var(--dusk);
+    border-left: 3px solid var(--lamp-edge);
+    padding-left: 0.85rem;
+  }
+
+  a { color: var(--ink); text-decoration-color: var(--lamp-edge); text-underline-offset: 0.2em; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 3px solid var(--lamp-edge); outline-offset: 3px; border-radius: 2px; }
+
+  /* ----------------------------------------------------------- footer */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-block: 2rem 3rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    font-size: 0.8125rem; color: var(--dusk); line-height: 1.6;
+  }
+
+  .fade { animation: rise 520ms cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .fade { animation: none; }
+    * { transition-duration: 1ms !important; }
+  }
+</style>
+
+<main class="wrap">
+
+  <header class="masthead fade">
+    <p class="sitename">Stories by Substep</p>
+    <h1>A reading book that does not look like one.</h1>
+    <p class="standfirst">Decodable readers for children who are learning to read the hard way &mdash; with stories worth getting to the end of.</p>
+    <p class="byline">Written by Terra Barnes &middot; Cover art by Leslie Bryan</p>
+  </header>
+
+  <figure class="cover">
+    <img src="img/cover.jpg" width="1000" height="1545"
+         alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses.">
+    <figcaption>Robin and Calvin &middot; all five sets in one paperback &middot; cover art by Leslie Bryan</figcaption>
+  </figure>
+
+  <section>
+    <div class="page">
+      <p>Chomp kicks. He thumps. He will not sit in a lap for just anyone.</p>
+      <p>But Robin lifts him up, and Chomp sits still in her lap. She rubs the soft spot on his chin. His back legs let go.</p>
+      <p>Robin can get a rabbit to sit still. Robin is the best at this.</p>
+      <p>In class, Robin is not the best at anything.</p>
+      <p class="folio">ROBIN AND THE RABBIT &middot; SET 1</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">What these are</p>
+    <h2>Every word is decodable.</h2>
+    <div class="prose">
+      <p class="lede">A child learning to read through a structured programme can only use the patterns she has been taught. Most books ignore that. These do not.</p>
+      <p>Every word in these readers is one a reader can sound out with the patterns taught up to her stage, or a high-frequency word introduced by then. Not most words. Every word. Each book is checked against its ceiling, word by word, before it is printed.</p>
+      <p>That is the ordinary promise of a decodable reader. The unusual part is that these are real stories, with a plot and people in them, and a reason to turn the page.</p>
+      <p>The five sets follow the substeps of Wilson Reading System&reg; Book&nbsp;3. The <a href="#chart">correspondence chart</a> below shows exactly which set lines up with which substep.</p>
+    </div>
+    <p class="disclaimer">Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation. These readers are an independent work and are not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training. The mark is named here only to describe which teaching sequence these sets line up with.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Why they sound the way they do</p>
+    <h2>The limits do the writing.</h2>
+    <div class="prose">
+      <p>At this stage a reader has not met silent <strong>e</strong>, or vowel teams, or r-controlled vowels. So a great many ordinary words are simply unavailable: <strong>feel</strong>, <strong>good</strong>, <strong>see</strong>, <strong>look</strong>, <strong>again</strong>, <strong>hard</strong>, <strong>sorry</strong>, <strong>afraid</strong>.</p>
+      <p>Nobody in these books can be nervous, then. Nobody can be afraid, or sorry. What they can be is specific:</p>
+    </div>
+    <div class="page">
+      <p>Her neck gets hot. Her hands get damp.</p>
+      <p class="folio">ROBIN AND THE RABBIT &middot; SET 1</p>
+    </div>
+    <div class="prose">
+      <p>The constraint turned out to be the best editor on the project. A character who cannot say sorry has to do something instead. A book that cannot use the word <strong>lie</strong> calls it a fib, which is what a child calls it anyway.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Who is in them</p>
+    <h2>The cast.</h2>
+    <dl class="cast">
+      <div class="who">
+        <dt>Robin</dt>
+        <dd>Cannot spell. Hands her test in fast, with the back on top, so nobody can see the blanks. Is the best in the world at getting a rabbit to sit still.</dd>
+      </div>
+      <div class="who">
+        <dt>Calvin</dt>
+        <dd>Ten out of ten on every test. Gets off the bus at six, unlocks a flat with nobody in it, and does his maths at the desk on his own.</dd>
+      </div>
+      <div class="who">
+        <dt>Chomp</dt>
+        <dd>A rabbit. Kicks, thumps, and will not sit in a lap for just anyone.</dd>
+      </div>
+      <div class="who">
+        <dt>Nick</dt>
+        <dd>Picks on Robin on the bus. Cannot do the maths, and does not want anyone to know it.</dd>
+      </div>
+      <div class="who">
+        <dt>Gran</dt>
+        <dd>Calvin&rsquo;s grandmother. Owns the lamp, and has firm views about being told the truth.</dd>
+      </div>
+      <div class="who">
+        <dt>Sam, Rex and Max</dt>
+        <dd>A boy, a dog who will not sit, and a twin brother. Their books are short on purpose, for a reader with not much stamina yet.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <p class="eyebrow">Robin and Calvin &middot; five sets</p>
+    <h2>One new pattern per book.</h2>
+    <div class="prose">
+      <p>The order is not decorative. A book in Set 3 uses Set 3&rsquo;s pattern and everything from Sets 1 and 2 &mdash; and nothing beyond it. The new pattern is marked in each sentence below.</p>
+    </div>
+
+    <div class="ladder">
+
+      <article class="rung">
+        <div class="rung-head">
+          <span class="rung-n">Set 1</span>
+          <h3 class="rung-title">Robin and the Rabbit</h3>
+        </div>
+        <p class="rung-adds">Adds: two closed syllables</p>
+        <div class="page">
+          <p>Robin has a <mark>rabbit</mark>. He is Chomp.</p>
+          <p class="folio">CHAPTER 1</p>
+        </div>
+      </article>
+
+      <article class="rung">
+        <div class="rung-head">
+          <span class="rung-n">Set 2</span>
+          <h3 class="rung-title">The Hundred</h3>
+        </div>
+        <p class="rung-adds">Adds: blends inside a syllable</p>
+        <div class="page">
+          <p>&ldquo;That <mark>hundred</mark> is not from the grass,&rdquo; Calvin tells her. &ldquo;It does not belong to us.&rdquo;</p>
+          <p class="folio">CHAPTER 2</p>
+        </div>
+      </article>
+
+      <article class="rung">
+        <div class="rung-head">
+          <span class="rung-n">Set 3</span>
+          <h3 class="rung-title">The Kid in Front</h3>
+        </div>
+        <p class="rung-adds">Adds: the <strong>ct</strong> blend</p>
+        <div class="page">
+          <p>Robin knows that hand. Nick can not do the math. That is a <mark>fact</mark>.</p>
+          <p class="folio">CHAPTER 2</p>
+        </div>
+      </article>
+
+      <article class="rung">
+        <div class="rung-head">
+          <span class="rung-n">Set 4</span>
+          <h3 class="rung-title">Gran</h3>
+        </div>
+        <p class="rung-adds">Adds: three-syllable closed words</p>
+        <div class="page">
+          <p>&ldquo;Calvin! That is <mark>fantastic</mark>,&rdquo; Robin says.</p>
+          <p class="folio">CHAPTER 5</p>
+        </div>
+      </article>
+
+      <article class="rung">
+        <div class="rung-head">
+          <span class="rung-n">Set 5</span>
+          <h3 class="rung-title">The Fib</h3>
+        </div>
+        <p class="rung-adds">Adds: the <strong>-ed</strong> and <strong>-ing</strong> suffixes</p>
+        <div class="page">
+          <p>Robin is <mark>checking</mark> the grass. Calvin is <mark>checking</mark> his hands. Not one of them is <mark>checking</mark> the den.</p>
+          <p class="folio">CHAPTER 2</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Sam &middot; five short books</p>
+    <h2>For a reader with low stamina.</h2>
+    <div class="prose">
+      <p>The same ladder, built shorter. One whole story per book, between 255 and 356 words, so a child who tires quickly can finish something on her own. Rex Will Not Sit &middot; Too Full &middot; The Big One &middot; The Tent &middot; The Last Chip.</p>
+    </div>
+  </section>
+
+  <section id="chart">
+    <p class="eyebrow">For teachers</p>
+    <h2>The correspondence chart.</h2>
+    <div class="prose">
+      <p>The books are branded by set, not by programme. Here is the whole mapping. It is free, it is not sold, and it is not part of any book.</p>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Each set is one stage of a structured-literacy sequence, named for the pattern it adds.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Set</th>
+            <th scope="col">The pattern this set adds</th>
+            <th scope="col">Wilson substep</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">1</th><td>Two closed syllables, no blend inside either</td><td>3.1</td></tr>
+          <tr><th scope="row">2</th><td>Closed syllables with blends (blanket, sandwich, problem)</td><td>3.2</td></tr>
+          <tr><th scope="row">3</th><td>The <strong>ct</strong> blend (insect, expect, fact)</td><td>3.3</td></tr>
+          <tr><th scope="row">4</th><td>Three-syllable closed words (fantastic, basketball)</td><td>3.4</td></tr>
+          <tr><th scope="row">5</th><td>The <strong>-ed</strong> and <strong>-ing</strong> suffixes, on unchanging bases only</td><td>3.5</td></tr>
+          <tr><th scope="row">6</th><td>Silent <strong>e</strong></td><td>4.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose">
+      <p>Everything taught in an earlier set stays available in every later one. A book in Set 3 uses Set 3&rsquo;s pattern <strong>and</strong> everything from Sets 1 and 2 &mdash; and is checked to make sure it uses nothing beyond that.</p>
+      <p>High-frequency words follow the same staging: a word is only used once the set it belongs to has introduced it.</p>
+      <p>Sets 1 to 5 sit inside Wilson Book 3 and are collected in one paperback. Set 6 is Book 4 material and ships on its own.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="buy">
+      <h2>Get the books.</h2>
+      <p>Robin and Calvin collects all five sets in one paperback, with twenty-five illustrations. Sam is sold separately.</p>
+      <a class="btn" href="#amazon">Buy on Amazon</a>
+      <p class="placeholder-note">Placeholder link. Replace both <strong>#amazon</strong> and <strong>#chart</strong> with the real URLs before this page goes live.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Stories by Substep &middot; Terra Barnes &middot; www.storiesbysubstep.com</p>
+    <p>These sets correspond to Wilson Reading System&reg; substeps. Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation. These readers are an independent work and are not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training. The mark is named here only to describe which teaching sequence these sets line up with.</p>
+    <p>Set in Atkinson Hyperlegible and Lexend, both drawn to be easier to read.</p>
+  </footer>
+
+</main>
