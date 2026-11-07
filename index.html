@@ -22,6 +22,8 @@
     --lamp:      #8F5A12;   /* amber, darkened to clear 4.5:1 as text  */
     --lamp-tint: #F6E6C9;
     --lamp-edge: #C8912F;
+    --lamp-solid:#8F5A12;   /* CTA fill; white on this clears 4.5:1    */
+    --on-lamp:   #FFFFFF;
 
     --measure: 36rem;
     --step-0: 1.0625rem;
@@ -40,6 +42,8 @@
       --lamp:      #F2B457;
       --lamp-tint: #3A2F1A;
       --lamp-edge: #8A6A2E;
+      --lamp-solid:#F2B457;
+      --on-lamp:   #1A1B2E;
     }
   }
   :root[data-theme="dark"] {
@@ -51,6 +55,8 @@
     --lamp:      #F2B457;
     --lamp-tint: #3A2F1A;
     --lamp-edge: #8A6A2E;
+    --lamp-solid:#F2B457;
+    --on-lamp:   #1A1B2E;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -107,6 +113,53 @@
   h1 { font-size: var(--step-4); font-weight: 700; }
   .standfirst { font-size: var(--step-1); color: var(--dusk); font-weight: 300; }
   .byline { font-size: 0.9375rem; color: var(--dusk); }
+
+  /* --------------------------------------------------------------- CTA */
+  .cta-row {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cta-meta { font-size: 0.875rem; color: var(--dusk); }
+
+  .btn-buy {
+    background: var(--lamp-solid);
+    border-color: var(--lamp-solid);
+    color: var(--on-lamp);
+  }
+  .btn-buy:hover {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* Sticky bar: appears once the masthead CTA has scrolled away, so the buy
+     action is never more than a thumb-reach off. Hidden until then, and it
+     never covers content because the body gets padding when it is showing. */
+  .buybar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: var(--ground);
+    border-top: 1px solid var(--rule);
+    padding: 0.7rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    transform: translateY(110%);
+    transition: transform 220ms cubic-bezier(.2,.7,.3,1);
+  }
+  .buybar[data-show="1"] { transform: none; }
+  .buybar-text { display: flex; flex-direction: column; line-height: 1.3; }
+  .buybar-title {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700; font-size: 0.9375rem;
+  }
+  .buybar-meta { font-size: 0.8125rem; color: var(--dusk); }
+  .buybar .btn { padding: 0.6rem 1.25rem; font-size: 0.9375rem; }
+  @media (max-width: 30rem) {
+    .buybar { justify-content: center; text-align: center; }
+    .buybar-text { align-items: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .buybar { transition: none; }
+  }
 
   /* ------------------------------------------------------------- cover */
   .cover { margin: 0; display: flex; flex-direction: column; gap: 0.9rem; }
@@ -305,6 +358,10 @@
     <h1>A reading book that does not look like one.</h1>
     <p class="standfirst">Decodable readers for children who are learning to read the hard way &mdash; with stories worth getting to the end of.</p>
     <p class="byline">Written by Terra Barnes &middot; Cover art by Leslie Bryan</p>
+    <p class="cta-row">
+      <a class="btn btn-buy" id="heroBuy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
+      <span class="cta-meta">Paperback &middot; $16.99 &middot; 86 pages</span>
+    </p>
   </header>
 
   <figure class="cover">
@@ -501,9 +558,8 @@
     <div class="buy">
       <h2>Get the books.</h2>
       <p>Robin and Calvin collects all five sets in one paperback, with twenty-five illustrations. Sam is sold separately.</p>
-      <a class="btn" href="#amazon">Buy on Amazon</a>
+      <a class="btn btn-buy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
       <p class="giving"><strong>Ten per cent of profits goes to the Churchill School.</strong></p>
-      <p class="placeholder-note">Placeholder link. Replace both <strong>#amazon</strong> and <strong>#chart</strong> with the real URLs before this page goes live.</p>
     </div>
   </section>
 
@@ -514,3 +570,39 @@
   </footer>
 
 </main>
+
+<div class="buybar" id="buybar" data-show="0" aria-hidden="true">
+  <span class="buybar-text">
+    <span class="buybar-title">Robin and Calvin</span>
+    <span class="buybar-meta">Paperback &middot; $16.99 &middot; all five sets</span>
+  </span>
+  <a class="btn btn-buy" id="barBuy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
+</div>
+
+<script>
+  // The sticky bar appears only once the masthead's own buy button has
+  // scrolled out of sight, so the two never compete, and it is removed from
+  // the accessibility tree while hidden.
+  (function () {
+    var hero = document.getElementById("heroBuy");
+    var bar  = document.getElementById("buybar");
+    if (!hero || !bar) return;
+
+    function show(on) {
+      bar.dataset.show = on ? "1" : "0";
+      bar.setAttribute("aria-hidden", on ? "false" : "true");
+      document.body.style.paddingBottom = on ? bar.offsetHeight + "px" : "";
+    }
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        show(!entries[0].isIntersecting);
+      }, { rootMargin: "0px 0px -100% 0px" }).observe(hero);
+    } else {
+      // older browsers: fall back to a scroll offset
+      window.addEventListener("scroll", function () {
+        show(window.scrollY > hero.offsetTop + hero.offsetHeight);
+      }, { passive: true });
+    }
+  })();
+</script>
