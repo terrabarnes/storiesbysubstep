@@ -105,11 +105,23 @@
 
   /* ---------------------------------------------------------- masthead */
   .masthead { display: flex; flex-direction: column; gap: 2rem; padding-block: 1rem 0; }
-  .sitename {
-    font-size: 0.875rem; font-weight: 700;
-    letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--lamp);
+  /* The mark is navy-on-transparent, so on the dark ground it needs lifting
+     off the background rather than inverting - inverting would turn the
+     three books into muddy complements. A soft light wash does it. */
+  .logo {
+    display: block;
+    width: 100%; max-width: 17rem; height: auto;
+    margin-bottom: -0.5rem;
   }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .logo {
+      filter: brightness(0) invert(1) opacity(0.92);
+    }
+  }
+  :root[data-theme="dark"] .logo {
+    filter: brightness(0) invert(1) opacity(0.92);
+  }
+  .logo-foot { max-width: 11rem; opacity: 0.8; margin-bottom: 0.3rem; }
   h1 { font-size: var(--step-4); font-weight: 700; }
   .standfirst { font-size: var(--step-1); color: var(--dusk); font-weight: 300; }
   .byline { font-size: 0.9375rem; color: var(--dusk); }
@@ -354,7 +366,8 @@
 <main class="wrap">
 
   <header class="masthead fade">
-    <p class="sitename">Stories by Substep</p>
+    <img class="logo" src="img/logo.png" width="900" height="300"
+         alt="Stories by Substep — three books standing in ascending height.">
     <h1>A reading book that does not look like one.</h1>
     <p class="standfirst">Decodable readers for children who are learning to read the hard way &mdash; with stories worth getting to the end of.</p>
     <p class="byline">Written by Terra Barnes &middot; Cover art by Leslie Bryan</p>
@@ -564,7 +577,8 @@
   </section>
 
   <footer>
-    <p>Stories by Substep &middot; Terra Barnes &middot; www.storiesbysubstep.com</p>
+    <img class="logo logo-foot" src="img/logo.png" width="900" height="300" alt="Stories by Substep">
+    <p>Terra Barnes &middot; www.storiesbysubstep.com</p>
     <p>These sets correspond to Wilson Reading System&reg; substeps. Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation. These readers are an independent work and are not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training. The mark is named here only to describe which teaching sequence these sets line up with.</p>
     <p>Set in Atkinson Hyperlegible and Lexend, both drawn to be easier to read.</p>
   </footer>
