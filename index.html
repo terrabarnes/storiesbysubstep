@@ -373,225 +373,200 @@
   }
 </style>
 
+<style>
+  /* ---------------------------------------------------- page additions */
+  .lede-block { display: flex; flex-direction: column; gap: 1.15rem; }
+  .kicker {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.4;
+  }
+
+  /* The two series sit as peers, not a main book and a footnote: same card,
+     same weight, ordered by age. */
+  .series { display: flex; flex-direction: column; gap: 1.75rem; }
+  .book {
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 0.85rem;
+    background: var(--paper);
+  }
+  .book h3 { font-size: var(--step-2); }
+  .book-meta {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 0.875rem; font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--lamp);
+  }
+  .book-corr {
+    font-size: 0.8125rem; color: var(--dusk);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.85rem;
+  }
+  .status {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700; font-size: 0.8125rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .status-now { color: var(--lamp); }
+  .status-soon { color: var(--dusk); }
+
+  .pull {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700;
+    font-size: var(--step-1);
+    line-height: 1.45;
+    border-left: 3px solid var(--lamp-edge);
+    padding-left: 1.1rem;
+  }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+  .legal {
+    font-size: 0.8125rem; line-height: 1.65; color: var(--dusk);
+    display: flex; flex-direction: column; gap: 0.9rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+  .legal h2 {
+    font-size: 0.875rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--dusk);
+  }
+</style>
+
 <main class="wrap">
 
   <header class="masthead fade">
     <img class="logo" src="img/logo.png" width="900" height="300"
          alt="Stories by Substep — three books standing in ascending height.">
-    <h1>A reading book that does not look like one.</h1>
-    <p class="standfirst">Decodable readers for children who are learning to read the hard way &mdash; with stories worth getting to the end of.</p>
-    <p class="byline">Written by Terra Barnes &middot; Cover art by Leslie Bryan</p>
-    <p class="cta-row">
-      <a class="btn btn-buy" id="heroBuy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
-      <span class="cta-meta">Paperback &middot; $16.99 &middot; 86 pages</span>
+    <h1>Decodable Books with Stories Worth Reading</h1>
+    <p class="standfirst">Real characters. Engaging stories. Precisely controlled phonics.</p>
+
+    <div class="lede-block">
+      <p>Finding engaging books that match a child&rsquo;s reading level shouldn&rsquo;t be difficult.</p>
+      <p>Stories by Substep creates carefully controlled decodable fiction that corresponds to specific instructional substeps of the <strong>Wilson Reading System&reg;</strong>.</p>
+      <p>Every word is checked against the decoding skills taught at that level. Every story is written to be worth reading.</p>
+      <p class="kicker">Two series for different ages. One carefully structured reading progression.</p>
+    </div>
+
+    <p class="cta-row btn-row">
+      <a class="btn btn-buy" id="heroBuy" href="https://www.amazon.com/dp/B0HQQJLBPS">Explore the Books</a>
+      <a class="btn btn-chart" href="correspondence-chart.pdf" download>View the Reading Correspondence Chart</a>
     </p>
+
+    <p class="disclaimer">Independent educational materials. Not affiliated with or endorsed by Wilson Language Training.</p>
   </header>
 
   <figure class="cover">
     <img src="img/cover.jpg" width="1000" height="1545"
          alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses.">
-    <figcaption>Robin and Calvin &middot; all five sets in one paperback &middot; cover art by Leslie Bryan</figcaption>
+    <figcaption>Robin and Calvin &middot; five connected stories &middot; cover art by Leslie Bryan</figcaption>
   </figure>
 
   <section>
-    <div class="page">
-      <p>Chomp kicks. He thumps. He will not sit in a lap for just anyone.</p>
-      <p>But Robin lifts him up, and Chomp sits still in her lap. She rubs the soft spot on his chin. His back legs let go.</p>
-      <p>Robin can get a rabbit to sit still. Robin is the best at this.</p>
-      <p>In class, Robin is not the best at anything.</p>
-      <p class="folio">ROBIN AND THE RABBIT &middot; SET 1</p>
+    <p class="eyebrow">Two series</p>
+    <h2>The Right Reading Level. The Right Kind of Story.</h2>
+    <div class="prose">
+      <p>Children working at the same decoding level don&rsquo;t necessarily have the same interests, maturity, or reading stamina.</p>
+      <p>That&rsquo;s why Stories by Substep offers two distinct series, both corresponding to the same Wilson Reading System&reg; instructional substeps.</p>
+    </div>
+
+    <div class="series">
+      <article class="book">
+        <h3>Sam</h3>
+        <p class="book-meta">Ages 6&ndash;9 &nbsp;&middot;&nbsp; Short, Complete Adventures</p>
+        <p>Five self-contained stories, approximately 250&ndash;350 words each.</p>
+        <p>Designed for younger readers who benefit from shorter books, accessible plots, and the satisfaction of finishing a complete story.</p>
+        <p class="book-corr">Instructional correspondence: Wilson Reading System&reg; Book&nbsp;3, substeps 3.1&ndash;3.5</p>
+        <p class="status status-soon">Coming soon</p>
+      </article>
+
+      <article class="book">
+        <h3>Robin and Calvin</h3>
+        <p class="book-meta">Ages 8&ndash;12 &nbsp;&middot;&nbsp; Longer, Connected Stories</p>
+        <p>Five illustrated stories, approximately 1,000&ndash;1,500 words each, following two children through friendship, mistakes, and growing up.</p>
+        <p>Designed for developing readers who need controlled decoding practice but want stories with more sophisticated characters and plots.</p>
+        <p class="book-corr">Instructional correspondence: Wilson Reading System&reg; Book&nbsp;3, substeps 3.1&ndash;3.5</p>
+        <p class="status status-now">Available now on Amazon</p>
+      </article>
     </div>
   </section>
 
   <section>
-    <p class="eyebrow">What these are</p>
-    <h2>Every word is decodable.</h2>
+    <p class="eyebrow">How they are made</p>
+    <h2>Carefully Controlled. Carefully Written.</h2>
     <div class="prose">
-      <p class="lede">A child learning to read through a structured programme can only use the patterns she has been taught. Most books ignore that. These do not.</p>
-      <p>Every word in these readers is one a reader can sound out with the patterns taught up to her stage, or a high-frequency word introduced by then. Not most words. Every word. Each book is checked against its ceiling, word by word, before it is printed.</p>
-      <p>That is the ordinary promise of a decodable reader. The unusual part is that these are real stories, with a plot and people in them, and a reason to turn the page.</p>
-      <p>The five sets follow the substeps of Wilson Reading System&reg; Book&nbsp;3. The <a href="#chart">correspondence chart</a> below shows exactly which set lines up with which substep.</p>
+      <p>Each Stories by Substep book corresponds to a specific Wilson Reading System&reg; instructional substep.</p>
+      <p>Words are checked against the phonics patterns and permitted high-frequency words at that level. New decoding skills are introduced in small, deliberate increments, while previously learned patterns are reinforced.</p>
+      <p>This precision gives children the opportunity to apply what they&rsquo;ve learned without encountering decoding patterns they haven&rsquo;t yet been taught.</p>
+      <p>And because reading is about more than decoding, every book is also written to tell a real story &mdash; with interesting characters, meaningful problems, and satisfying endings.</p>
     </div>
-    <p class="disclaimer">Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation. These readers are an independent work and are not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training. The mark is named here only to describe which teaching sequence these sets line up with.</p>
+    <p class="pull">The decoding is controlled. The storytelling isn&rsquo;t an afterthought.</p>
   </section>
 
   <section>
-    <p class="eyebrow">Why they sound the way they do</p>
-    <h2>The limits do the writing.</h2>
+    <p class="eyebrow">What comes next</p>
+    <h2>Beginning with Book 3. Built to Grow.</h2>
     <div class="prose">
-      <p>At this stage a reader has not met silent <strong>e</strong>, or vowel teams, or r-controlled vowels. So a great many ordinary words are simply unavailable: <strong>feel</strong>, <strong>good</strong>, <strong>see</strong>, <strong>look</strong>, <strong>again</strong>, <strong>hard</strong>, <strong>sorry</strong>, <strong>afraid</strong>.</p>
-      <p>Nobody in these books can be nervous, then. Nobody can be afraid, or sorry. What they can be is specific:</p>
-    </div>
-    <div class="page">
-      <p>Her neck gets hot. Her hands get damp.</p>
-      <p class="folio">ROBIN AND THE RABBIT &middot; SET 1</p>
-    </div>
-    <div class="prose">
-      <p>The constraint turned out to be the best editor on the project. A character who cannot say sorry has to do something instead. A book that cannot use the word <strong>lie</strong> calls it a fib, which is what a child calls it anyway.</p>
-    </div>
-  </section>
-
-  <section>
-    <p class="eyebrow">Who is in them</p>
-    <h2>The cast.</h2>
-    <dl class="cast">
-      <div class="who">
-        <dt>Robin</dt>
-        <dd>Cannot spell. Hands her test in fast, with the back on top, so nobody can see the blanks. Is the best in the world at getting a rabbit to sit still.</dd>
-      </div>
-      <div class="who">
-        <dt>Calvin</dt>
-        <dd>Ten out of ten on every test. Gets off the bus at six, unlocks a flat with nobody in it, and does his maths at the desk on his own.</dd>
-      </div>
-      <div class="who">
-        <dt>Chomp</dt>
-        <dd>A rabbit. Kicks, thumps, and will not sit in a lap for just anyone.</dd>
-      </div>
-      <div class="who">
-        <dt>Nick</dt>
-        <dd>Picks on Robin on the bus. Cannot do the maths, and does not want anyone to know it.</dd>
-      </div>
-      <div class="who">
-        <dt>Gran</dt>
-        <dd>Calvin&rsquo;s grandmother. Owns the lamp, and has firm views about being told the truth.</dd>
-      </div>
-      <div class="who">
-        <dt>Sam, Rex and Max</dt>
-        <dd>A boy, a dog who will not sit, and a twin brother. Their books are short on purpose, for a reader with not much stamina yet.</dd>
-      </div>
-    </dl>
-  </section>
-
-  <section>
-    <p class="eyebrow">Robin and Calvin &middot; five sets</p>
-    <h2>One new pattern per book.</h2>
-    <div class="prose">
-      <p>The order is not decorative. A book in Set 3 uses Set 3&rsquo;s pattern and everything from Sets 1 and 2 &mdash; and nothing beyond it. The new pattern is marked in each sentence below.</p>
-    </div>
-
-    <div class="ladder">
-
-      <article class="rung">
-        <div class="rung-head">
-          <span class="rung-n">Set 1</span>
-          <h3 class="rung-title">Robin and the Rabbit</h3>
-        </div>
-        <p class="rung-adds">Adds: two closed syllables</p>
-        <div class="page">
-          <p>Robin has a <mark>rabbit</mark>. He is Chomp.</p>
-          <p class="folio">CHAPTER 1</p>
-        </div>
-      </article>
-
-      <article class="rung">
-        <div class="rung-head">
-          <span class="rung-n">Set 2</span>
-          <h3 class="rung-title">The Hundred</h3>
-        </div>
-        <p class="rung-adds">Adds: blends inside a syllable</p>
-        <div class="page">
-          <p>&ldquo;That <mark>hundred</mark> is not from the grass,&rdquo; Calvin tells her. &ldquo;It does not belong to us.&rdquo;</p>
-          <p class="folio">CHAPTER 2</p>
-        </div>
-      </article>
-
-      <article class="rung">
-        <div class="rung-head">
-          <span class="rung-n">Set 3</span>
-          <h3 class="rung-title">The Kid in Front</h3>
-        </div>
-        <p class="rung-adds">Adds: the <strong>ct</strong> blend</p>
-        <div class="page">
-          <p>Robin knows that hand. Nick can not do the math. That is a <mark>fact</mark>.</p>
-          <p class="folio">CHAPTER 2</p>
-        </div>
-      </article>
-
-      <article class="rung">
-        <div class="rung-head">
-          <span class="rung-n">Set 4</span>
-          <h3 class="rung-title">Gran</h3>
-        </div>
-        <p class="rung-adds">Adds: three-syllable closed words</p>
-        <div class="page">
-          <p>&ldquo;Calvin! That is <mark>fantastic</mark>,&rdquo; Robin says.</p>
-          <p class="folio">CHAPTER 5</p>
-        </div>
-      </article>
-
-      <article class="rung">
-        <div class="rung-head">
-          <span class="rung-n">Set 5</span>
-          <h3 class="rung-title">The Fib</h3>
-        </div>
-        <p class="rung-adds">Adds: the <strong>-ed</strong> and <strong>-ing</strong> suffixes</p>
-        <div class="page">
-          <p>Robin is <mark>checking</mark> the grass. Calvin is <mark>checking</mark> his hands. Not one of them is <mark>checking</mark> the den.</p>
-          <p class="folio">CHAPTER 2</p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section>
-    <p class="eyebrow">Sam &middot; five short books</p>
-    <h2>For a reader with low stamina.</h2>
-    <div class="prose">
-      <p>The same ladder, built shorter. One whole story per book, between 255 and 356 words, so a child who tires quickly can finish something on her own. Rex Will Not Sit &middot; Too Full &middot; The Big One &middot; The Tent &middot; The Last Chip.</p>
+      <p>Our first two series correspond to Wilson Reading System&reg; Book&nbsp;3, substeps 3.1&ndash;3.5.</p>
+      <p>We hope to expand the collection to include stories corresponding to Books 4 and 5, giving developing readers more opportunities to practice new skills through engaging, age-appropriate fiction.</p>
+      <p>Each new collection will follow the same principle: precise decoding constraints without sacrificing the story.</p>
     </div>
   </section>
 
   <section id="chart">
-    <p class="eyebrow">For teachers</p>
-    <h2>The correspondence chart.</h2>
+    <p class="eyebrow">For teachers and tutors</p>
+    <h2>Find Books by Instructional Substep</h2>
     <div class="prose">
-      <p>The books are branded by set, not by programme. Here is the whole mapping. It is free, it is not sold, and it is not part of any book.</p>
-      <p><a class="btn btn-chart" href="correspondence-chart.pdf" download>Download the chart (PDF, one page)</a></p>
+      <p>Both series follow the same sequence of decoding skills, corresponding to Wilson Reading System&reg; Book&nbsp;3.</p>
     </div>
 
     <div class="table-scroll">
       <table>
-        <caption>Each set is one stage of a structured-literacy sequence, named for the pattern it adds.</caption>
         <thead>
           <tr>
-            <th scope="col">Set</th>
-            <th scope="col">The pattern this set adds</th>
-            <th scope="col">Wilson substep</th>
+            <th scope="col">Substep</th>
+            <th scope="col">Sam <span style="font-weight:400;text-transform:none;letter-spacing:0">(ages 6&ndash;9)</span></th>
+            <th scope="col">Robin and Calvin <span style="font-weight:400;text-transform:none;letter-spacing:0">(ages 8&ndash;12)</span></th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">1</th><td>Two closed syllables, no blend inside either</td><td>3.1</td></tr>
-          <tr><th scope="row">2</th><td>Closed syllables with blends (blanket, sandwich, problem)</td><td>3.2</td></tr>
-          <tr><th scope="row">3</th><td>The <strong>ct</strong> blend (insect, expect, fact)</td><td>3.3</td></tr>
-          <tr><th scope="row">4</th><td>Three-syllable closed words (fantastic, basketball)</td><td>3.4</td></tr>
-          <tr><th scope="row">5</th><td>The <strong>-ed</strong> and <strong>-ing</strong> suffixes, on unchanging bases only</td><td>3.5</td></tr>
-          <tr><th scope="row">6</th><td>Silent <strong>e</strong></td><td>4.1</td></tr>
+          <tr><th scope="row">3.1</th><td>Rex Will Not Sit</td><td>Robin and the Rabbit</td></tr>
+          <tr><th scope="row">3.2</th><td>Too Full</td><td>The Hundred</td></tr>
+          <tr><th scope="row">3.3</th><td>The Big One</td><td>The Kid in Front</td></tr>
+          <tr><th scope="row">3.4</th><td>The Tent</td><td>Gran</td></tr>
+          <tr><th scope="row">3.5</th><td>The Last Chip</td><td>The Fib</td></tr>
         </tbody>
       </table>
     </div>
 
-    <div class="prose">
-      <p>Everything taught in an earlier set stays available in every later one. A book in Set 3 uses Set 3&rsquo;s pattern <strong>and</strong> everything from Sets 1 and 2 &mdash; and is checked to make sure it uses nothing beyond that.</p>
-      <p>High-frequency words follow the same staging: a word is only used once the set it belongs to has introduced it.</p>
-      <p>Sets 1 to 5 sit inside Wilson Book 3 and are collected in one paperback. Set 6 is Book 4 material and ships on its own.</p>
-    </div>
+    <p><a class="btn btn-chart" href="correspondence-chart.pdf" download>View the Full Reading Correspondence Chart</a></p>
   </section>
 
   <section>
     <div class="buy">
-      <h2>Get the books.</h2>
-      <p>Robin and Calvin collects all five sets in one paperback, with twenty-five illustrations. Sam is sold separately.</p>
-      <a class="btn btn-buy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
-      <p class="giving"><strong>Ten per cent of profits goes to the Churchill School.</strong></p>
+      <h2>Give Every Reader a Story Worth Finishing.</h2>
+      <p>Whether you&rsquo;re a parent, teacher, tutor, or reading specialist, Stories by Substep helps you find engaging fiction that corresponds to the decoding skills a child is learning.</p>
+      <p class="kicker">Choose the substep. Find the right story. Let the reading begin.</p>
+      <p><a class="btn btn-buy" href="https://www.amazon.com/dp/B0HQQJLBPS">Explore the Books</a></p>
+      <p class="giving">Created by Terra Barnes, Ph.D. &nbsp;&middot;&nbsp; Cover art by Leslie Bryan<br>
+      <strong>10% of profits support the Churchill School.</strong></p>
     </div>
+  </section>
+
+  <section class="legal">
+    <h2>Independent Publication Disclaimer</h2>
+    <p>Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation.</p>
+    <p>Stories by Substep is an independent publisher of supplemental decodable reading materials. It is not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training Corporation.</p>
+    <p>References to Wilson Reading System&reg; books and instructional substeps are provided solely to describe the intended correspondence between the decoding skills used in Stories by Substep publications and those taught in the Wilson Reading System&reg;. These publications are not official Wilson Reading System&reg; materials.</p>
   </section>
 
   <footer>
     <img class="logo logo-foot" src="img/logo.png" width="900" height="300" alt="Stories by Substep">
     <p>Terra Barnes &middot; www.storiesbysubstep.com</p>
-    <p>These sets correspond to Wilson Reading System&reg; substeps. Wilson Reading System&reg; is a registered trademark of Wilson Language Training Corporation. These readers are an independent work and are not affiliated with, authorized by, sponsored by, or endorsed by Wilson Language Training. The mark is named here only to describe which teaching sequence these sets line up with.</p>
-    <p>Set in Atkinson Hyperlegible and Lexend, both drawn to be easier to read.</p>
   </footer>
 
 </main>
@@ -599,7 +574,7 @@
 <div class="buybar" id="buybar" data-show="0" aria-hidden="true">
   <span class="buybar-text">
     <span class="buybar-title">Robin and Calvin</span>
-    <span class="buybar-meta">Paperback &middot; $16.99 &middot; all five sets</span>
+    <span class="buybar-meta">Paperback &middot; $16.99 &middot; ages 8&ndash;12</span>
   </span>
   <a class="btn btn-buy" id="barBuy" href="https://www.amazon.com/dp/B0HQQJLBPS">Buy on Amazon</a>
 </div>
@@ -624,7 +599,6 @@
         show(!entries[0].isIntersecting);
       }, { rootMargin: "0px 0px -100% 0px" }).observe(hero);
     } else {
-      // older browsers: fall back to a scroll offset
       window.addEventListener("scroll", function () {
         show(window.scrollY > hero.offsetTop + hero.offsetHeight);
       }, { passive: true });
