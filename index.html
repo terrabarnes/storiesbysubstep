@@ -207,10 +207,21 @@
     border-top: 1px solid var(--rule);
     padding-top: 0.7rem; margin-top: 0.35rem;
   }
-  .book-cover {
-    display: block; width: 100%; max-width: 11rem; height: auto;
-    border: 1px solid var(--rule); border-radius: 2px;
-    margin-bottom: 0.4rem;
+  /* Both covers, same width, same baseline - the two series are peers and the
+     page should not imply one is the headline act. */
+  .covers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .cover-credit {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-size: 0.8125rem; color: var(--dusk);
+    margin-top: 0.85rem;
+  }
+  @media (max-width: 26rem) {
+    .covers { grid-template-columns: 1fr; gap: 1.9rem; }
   }
 
   /* ------------------------------------------------------------- cover */
@@ -233,6 +244,20 @@
   }
 
   /* ------------------------------------------------------------- table */
+  /* The chart is landscape and dense, so it gets the full column and its own
+     horizontal scroll rather than being shrunk to illegibility. */
+  .chart {
+    margin: 0;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .chart img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--rule); border-radius: 2px;
+    background: #fff;
+  }
+  .chart figcaption { font-size: 0.8125rem; color: var(--dusk); }
+  .eyebrow-sub { margin-top: 0.6rem; }
+
   .table-scroll { overflow-x: auto; }
   table {
     border-collapse: collapse;
@@ -500,11 +525,19 @@
     <p class="disclaimer">Independent educational materials. Not affiliated with or endorsed by Wilson Language Training.</p>
   </header>
 
-  <figure class="cover">
-    <img src="img/cover.jpg" width="1000" height="1545"
-         alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses.">
-    <figcaption>Robin and Calvin &middot; five connected stories &middot; cover art by Leslie Bryan</figcaption>
-  </figure>
+  <div class="covers">
+    <figure class="cover">
+      <img src="img/cover-sam.jpg" width="1000" height="1545"
+           alt="Cover of Sam: a boy and his dog sit by a tent beside a lake at dusk, a red wagon of camping gear behind them.">
+      <figcaption><b>Sam</b> &middot; five short books &middot; ages 6&ndash;9</figcaption>
+    </figure>
+    <figure class="cover">
+      <img src="img/cover.jpg" width="1000" height="1545"
+           alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses.">
+      <figcaption><b>Robin and Calvin</b> &middot; five connected stories &middot; ages 8&ndash;12</figcaption>
+    </figure>
+  </div>
+  <p class="cover-credit">Cover art by Leslie Bryan</p>
 
   <section>
     <p class="eyebrow">Two series</p>
@@ -516,8 +549,6 @@
 
     <div class="series">
       <article class="book">
-        <img class="book-cover" src="img/cover-sam.jpg" width="1000" height="1545"
-             alt="Cover of Sam: a boy and his dog sit by a tent at dusk beside a lake.">
         <h3>Sam</h3>
         <p class="book-meta">Ages 6&ndash;9 &nbsp;&middot;&nbsp; Short, Complete Adventures</p>
         <p>Five self-contained stories, approximately 250&ndash;350 words each.</p>
@@ -527,8 +558,6 @@
       </article>
 
       <article class="book">
-        <img class="book-cover" src="img/cover.jpg" width="1000" height="1545"
-             alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them.">
         <h3>Robin and Calvin</h3>
         <p class="book-meta">Ages 8&ndash;12 &nbsp;&middot;&nbsp; Longer, Connected Stories</p>
         <p>Five illustrated stories, approximately 1,000&ndash;1,500 words each, following two children through friendship, mistakes, and growing up.</p>
@@ -590,6 +619,14 @@
       <p>Both series follow the same sequence of decoding skills, corresponding to Wilson Reading System&reg; Book&nbsp;3.</p>
     </div>
 
+
+    <figure class="chart">
+      <img src="img/chart.jpg" width="1650" height="1275"
+           alt="The Wilson Reading System correspondence chart: a landscape grid with Sam and Robin and Calvin as rows, substeps 3.1 to 3.5 as columns, each cell naming the story at that substep, with each series' cover, age range, words per book, and a QR code to its Amazon page.">
+      <figcaption>One page, US Letter landscape. Print it and keep it by the lesson plan.</figcaption>
+    </figure>
+
+    <p class="eyebrow eyebrow-sub">The same mapping, as text</p>
     <div class="table-scroll">
       <table>
         <thead>
@@ -609,7 +646,7 @@
       </table>
     </div>
 
-    <p><a class="btn btn-chart" href="correspondence-chart.pdf" download>View the Full Reading Correspondence Chart</a></p>
+    <p><a class="btn btn-chart" href="correspondence-chart.pdf" download>Download the chart (PDF)</a></p>
   </section>
 
   <section>
