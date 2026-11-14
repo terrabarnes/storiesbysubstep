@@ -18,6 +18,57 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@300;400;500;600&display=swap">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.storiesbysubstep.com/#terra",
+      "name": "Terra Barnes",
+      "honorificSuffix": "PhD",
+      "jobTitle": "Author",
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Massachusetts Institute of Technology" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.storiesbysubstep.com/#site",
+      "url": "https://www.storiesbysubstep.com/",
+      "name": "Stories by Substep",
+      "description": "Decodable readers that correspond to the substeps of Wilson Reading System Book 3.",
+      "publisher": { "@id": "https://www.storiesbysubstep.com/#terra" }
+    },
+    {
+      "@type": "Book",
+      "name": "Robin and Calvin",
+      "bookFormat": "https://schema.org/Paperback",
+      "isbn": "9798982449207",
+      "numberOfPages": 86,
+      "inLanguage": "en",
+      "typicalAgeRange": "8-12",
+      "author": { "@id": "https://www.storiesbysubstep.com/#terra" },
+      "image": "https://www.storiesbysubstep.com/img/cover.jpg",
+      "description": "Five connected decodable stories, 1,000-1,500 words each, corresponding to Wilson Reading System Book 3 substeps 3.1-3.5.",
+      "url": "https://www.amazon.com/dp/B0HQQJLBPS"
+    },
+    {
+      "@type": "Book",
+      "name": "Sam",
+      "bookFormat": "https://schema.org/Paperback",
+      "isbn": "9798982449214",
+      "numberOfPages": 26,
+      "inLanguage": "en",
+      "typicalAgeRange": "6-9",
+      "author": { "@id": "https://www.storiesbysubstep.com/#terra" },
+      "image": "https://www.storiesbysubstep.com/img/cover-sam.jpg",
+      "description": "Five short decodable books, 250-350 words each, one complete story per book, corresponding to Wilson Reading System Book 3 substeps 3.1-3.5.",
+      "url": "https://www.amazon.com/dp/B0HRNJ92VK"
+    }
+  ]
+}
+</script>
+
+
 <style>
   /* ------------------------------------------------------------------
      Palette: indigo + amber. Deliberately the one high-contrast pair
@@ -215,6 +266,15 @@
     gap: 1.5rem;
     align-items: start;
   }
+  .book-link a {
+    font-family: "Atkinson Hyperlegible", sans-serif;
+    font-weight: 700; font-size: 0.875rem;
+    color: var(--lamp); text-decoration: none;
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 1px;
+  }
+  .book-link a:hover { border-bottom-color: var(--lamp); }
+  .cover a { display: block; }
   .cover-credit {
     font-family: "Atkinson Hyperlegible", sans-serif;
     font-size: 0.8125rem; color: var(--dusk);
@@ -527,13 +587,13 @@
 
   <div class="covers">
     <figure class="cover">
-      <img src="img/cover-sam.jpg" width="1000" height="1545"
-           alt="Cover of Sam: a boy and his dog sit by a tent beside a lake at dusk, a red wagon of camping gear behind them.">
+      <a href="https://www.amazon.com/dp/B0HRNJ92VK"><img loading="lazy" decoding="async" src="img/cover-sam.jpg" width="1000" height="1545"
+           alt="Cover of Sam: a boy and his dog sit by a tent beside a lake at dusk, a red wagon of camping gear behind them."></a>
       <figcaption><b>Sam</b> &middot; five short books &middot; ages 6&ndash;9</figcaption>
     </figure>
     <figure class="cover">
-      <img src="img/cover.jpg" width="1000" height="1545"
-           alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses.">
+      <a href="https://www.amazon.com/dp/B0HQQJLBPS"><img loading="lazy" decoding="async" src="img/cover.jpg" width="1000" height="1545"
+           alt="Cover of Robin and Calvin: two children sit on a front stoop at sunset with a rabbit between them, looking out at a row of brick houses."></a>
       <figcaption><b>Robin and Calvin</b> &middot; five connected stories &middot; ages 8&ndash;12</figcaption>
     </figure>
   </div>
@@ -555,6 +615,7 @@
         <p>Designed for younger readers who benefit from shorter books, accessible plots, and the satisfaction of finishing a complete story.</p>
         <p class="book-corr">Instructional correspondence: Wilson Reading System&reg; Book&nbsp;3, substeps 3.1&ndash;3.5</p>
         <p class="status status-soon">Coming soon</p>
+        <p class="book-link"><a href="https://www.amazon.com/dp/B0HRNJ92VK">See Sam on Amazon &rarr;</a></p>
       </article>
 
       <article class="book">
@@ -564,6 +625,7 @@
         <p>Designed for developing readers who need controlled decoding practice but want stories with more sophisticated characters and plots.</p>
         <p class="book-corr">Instructional correspondence: Wilson Reading System&reg; Book&nbsp;3, substeps 3.1&ndash;3.5</p>
         <p class="status status-now">Available now on Amazon</p>
+        <p class="book-link"><a href="https://www.amazon.com/dp/B0HQQJLBPS">Buy Robin and Calvin &rarr;</a></p>
       </article>
     </div>
   </section>
@@ -621,7 +683,7 @@
 
 
     <figure class="chart">
-      <img src="img/chart.jpg" width="1650" height="1275"
+      <img loading="lazy" decoding="async" src="img/chart.jpg" width="1650" height="1275"
            alt="The Wilson Reading System correspondence chart: a landscape grid with Sam and Robin and Calvin as rows, substeps 3.1 to 3.5 as columns, each cell naming the story at that substep, with each series' cover, age range, words per book, and a QR code to its Amazon page.">
       <figcaption>One page, US Letter landscape. Print it and keep it by the lesson plan.</figcaption>
     </figure>
@@ -649,13 +711,25 @@
     <p><a class="btn btn-chart" href="correspondence-chart.pdf" download>Download the chart (PDF)</a></p>
   </section>
 
+  <section id="author">
+    <p class="eyebrow">Who makes these</p>
+    <h2>Why These Books Exist</h2>
+    <div class="prose">
+      <p>Stories by Substep is written by <strong>Terra Barnes, PhD</strong>, whose doctorate is in Brain and Cognitive Sciences from MIT.</p>
+      <p>The problem these books were built to solve is a specific one. Decodable readers keep a child&rsquo;s decoding honest, but they are usually written as exercises &mdash; flat sentences assembled from a permitted word list, with no one in them worth caring about. Children notice. A reader who already finds the page difficult is being asked to work hard for a story that gives nothing back.</p>
+      <p>The constraint is real and it is not negotiable: at substep&nbsp;3.1 there is no silent&nbsp;<strong>e</strong>, no vowel teams, no r-controlled vowels. <strong>Feel</strong>, <strong>good</strong>, <strong>afraid</strong> and <strong>sorry</strong> are all off the table. What that rules out is abstraction, not feeling. A character can still have a hot neck and damp hands.</p>
+      <p>So every word in these books is checked by program against the patterns taught up to that substep, and every story is then written &mdash; and rewritten &mdash; to be worth the child&rsquo;s effort. Both constraints, not one at the expense of the other.</p>
+    </div>
+    <p class="pull">A child who struggles to read still deserves a book worth reading.</p>
+  </section>
+
   <section>
     <div class="buy">
       <h2>Give Every Reader a Story Worth Finishing.</h2>
       <p>Whether you&rsquo;re a parent, teacher, tutor, or reading specialist, Stories by Substep helps you find engaging fiction that corresponds to the decoding skills a child is learning.</p>
       <p class="kicker">Choose the substep. Find the right story. Let the reading begin.</p>
       <p><a class="btn btn-buy" href="https://www.amazon.com/dp/B0HQQJLBPS">Explore the Books</a></p>
-      <p class="giving">Created by Terra Barnes, Ph.D. &nbsp;&middot;&nbsp; Cover art by Leslie Bryan<br>
+      <p class="giving">Created by Terra Barnes, PhD &nbsp;&middot;&nbsp; Cover art by Leslie Bryan<br>
       <strong>10% of profits support the Churchill School.</strong></p>
     </div>
   </section>
@@ -668,7 +742,7 @@
   </section>
 
   <footer>
-    <img class="logo logo-foot" src="img/logo.png" width="900" height="300" alt="Stories by Substep">
+    <img loading="lazy" decoding="async" class="logo logo-foot" src="img/logo.png" width="900" height="300" alt="Stories by Substep">
     <p>Terra Barnes &middot; www.storiesbysubstep.com</p>
   </footer>
 
